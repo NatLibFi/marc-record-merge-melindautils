@@ -1,0 +1,24 @@
+{
+  "name": "marc-record-merge-melindautils",
+  "version": "0.1.0",
+  "description": "Utility functions to apply for marc records during deduplication in the National Library of Finland's union catalogue",
+  "main": "lib/marc-record-merge-melindautils.js",
+  "scripts": {
+    "test": "grunt default"
+  },
+  "author": "Pasi Tuominen <pasi.tuominen@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^2.0.0",
+    "grunt": "^0.4.5",
+    "grunt-contrib-jshint": "^0.11.0",
+    "grunt-mocha-istanbul": "^2.3.1",
+    "grunt-mocha-test": "^0.12.7",
+    "istanbul": "^0.3.6",
+    "mocha": "^2.1.0"
+  },
+  "dependencies": {
+    "marc-record-js": "git://github.com/petuomin/marc-record-js",
+    "q": "^1.2.0"
+  }
+}
