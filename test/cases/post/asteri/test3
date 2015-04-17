@@ -1,0 +1,9 @@
+should error if both are authorized formats (and different)
+
+001    1
+100 __ ‡aAleksis Kiven seura
+
+001    2
+100 __ ‡aKivi, Aleksis,‡d1834-1872
+
+Error: Both records are in authorized format.

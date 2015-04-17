@@ -1,0 +1,13 @@
+should not care about following characters when comparing items: .,-:
+
+001    1
+100 __ ‡aCastrén, Klaus,‡a1923-2011.
+
+001    2
+100 __ ‡aCastrén, Klaus.
+
+LDR    
+001    000000000
+035 __ ‡z(FI-MELINDA)1
+035 __ ‡z(FI-MELINDA)2
+100 __ ‡aCastrén, Klaus,‡a1923-2011.

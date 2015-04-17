@@ -1,0 +1,11 @@
+should prevent merge on field count mismatch for field 100 or when record has 100 and the other doesn't.
+
+001    1
+100 __ ‡aKivi, Aleksis,‡d1834-1872
+LOW __ ‡aFENNI
+
+001    2
+700 __ ‡aKivi, Aleksis,‡d1834-1872
+LOW __ ‡aOULA
+
+Error: Field count mismatch for field 100

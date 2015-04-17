@@ -8,74 +8,118 @@ var MergeUtilsMelinda = require('../lib/marc-record-merge-melindautils');
 var path = require('path');
 var fs = require('fs');
 
-describe('Merger', function() {
+describe('Merge utils -', function() {
+
+	var config = {
+		
+		Xendpoint: 'http://localhost:8080/melinda.kansalliskirjasto.fi/X' 
+		
+	};
+
+	var mergeUtils = new MergeUtilsMelinda(config);
 
 	var DEBUG = process.env.NODE_ENV === "DEBUG";
-	
-	var suitesPath = path.resolve(__dirname, "mergeutils");
+
+	var casePath = path.resolve(__dirname, "cases");
+	var cases = fs.readdirSync(casePath);
+
+	cases.forEach(function(tcase) {
+
+	var suitesPath = path.resolve(__dirname, "cases", tcase);
 	var suites = fs.readdirSync(suitesPath);
 					
-	suites.forEach(function(suite) {
+		suites.forEach(function(suite) {
 
-		describe(suite, function() {
+			describe(tcase + "-" + suite, function() {
 
-			var p = path.resolve(suitesPath, suite);
+				var p = path.resolve(suitesPath, suite);
 
-			var testFiles = fs.readdirSync(p)
-				.filter(function(filename) {
-					return filename.indexOf("test") === 0;
+				var testFiles = fs.readdirSync(p)
+					.filter(function(filename) {
+						return filename.indexOf("test") === 0;
+					});
+
+				var tests = testFiles.map(function(file) {
+
+					var data = readAndTrim(path.resolve(p,file)).split("\n\n");
+
+					return {
+						description: data[0] + (DEBUG ? " (" + path.resolve(p,file) + ")" : ''),
+						record_other: data[1],
+						record_preferred: data[2],
+						expected_output: data[3]
+					};
 				});
 
-			var tests = testFiles.map(function(file) {
-
-				var data = readAndTrim(path.resolve(p,file)).split("\n\n");
-
-				return {
-					description: data[0] + (DEBUG ? " (" + path.resolve(p,file) + ")" : ''),
-					record_other: data[1],
-					record_preferred: data[2],
-					expected_post_modified_merged_record: data[3]
-				};
-			});
-
-			var runOnly = tests.filter(function(test) {
-				return test.description.charAt(0) == '!';
-			});
-
-			if (runOnly.length > 0) {
-				tests = runOnly;
-			}
-
-			tests.forEach(function(test) {
-
-				it(test.description, function(done) {
-
-					var postMergeModifiedRecord = Record.fromString(test.record_preferred);
-
-					MergeUtilsMelinda.applyPostMergeModifications(
-						Record.fromString(test.record_other), 
-						Record.fromString(test.record_preferred),
-						postMergeModifiedRecord
-					);
-
-					removeField(postMergeModifiedRecord, '583');
-					
-
-					expect(postMergeModifiedRecord.toString()).to.equal(test.expected_post_modified_merged_record);
-
-					done();
-
+				var runOnly = tests.filter(function(test) {
+					return test.description.charAt(0) == '!';
 				});
+
+				if (runOnly.length > 0) {
+					tests = runOnly;
+				}
+
+				if (tcase === "post") {
+
+				tests.forEach(function(test) {
+
+					it(test.description, function(done) {
+
+						this.timeout(5000);
+
+						var postMergeModifiedRecord = Record.fromString(test.record_preferred);
+
+						mergeUtils.applyPostMergeModifications(
+							Record.fromString(test.record_other), 
+							Record.fromString(test.record_preferred),
+							postMergeModifiedRecord
+						).then(function() {
+							removeField(postMergeModifiedRecord, '583');
+							expect(postMergeModifiedRecord.toString()).to.equal(test.expected_output);
+							done();
+						}).catch(function(error) {
+							expect(error.toString()).to.equal(test.expected_output);
+							done();
+						}).done();
+
+
+					});
+				});
+
+				}
+
+				if (tcase === "sanity") {
+					tests.forEach(function(test) {
+
+					it(test.description, function(done) {
+
+						this.timeout(5000);
+
+						mergeUtils.canMerge(
+							Record.fromString(test.record_other), 
+							Record.fromString(test.record_preferred)
+						).then(function(result) {
+							expect(result).to.equal(test.expected_output);
+							done();
+						}).catch(function(error) {
+							expect(error.toString()).to.equal(test.expected_output);
+							done();
+						}).done();
+
+
+					});
+				});
+				}
+
+			
 			});
-
-		
-		});
-
+});
 	});
 
 });
 
 function removeField(record, tag) {
+
 	record.fields = record.fields.filter(function(field) {
 		return field.tag !== tag;
 	});

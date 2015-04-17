@@ -1,0 +1,11 @@
+should allow merge when everyting is ok
+
+001    1
+100 __ ‡aKivi, Aleksis,‡d1834-1872
+LOW __ ‡aFENNI
+
+001    2
+100 __ ‡aAleksis Kivi
+LOW __ ‡aOULA
+
+OK

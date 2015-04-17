@@ -1,0 +1,11 @@
+should prevent merge for different types (by leader/6)
+
+LDR    00000cam a22001934i 4500
+001    1
+SID __ ‡c34893‡bfenni
+LOW __ ‡aFENNI
+
+LDR    00000cdm a22001934i 4500
+001    2
+
+Error: Records are of different type (leader/6): a - d

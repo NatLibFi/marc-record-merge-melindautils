@@ -1,0 +1,13 @@
+should use only proper fields when querying asteri
+
+001    1
+100 __ ‡aKivi, Aleksis,‡d1834-1872‡9this is a dummyfield
+
+001    2
+100 __ ‡aAleksis Kivi
+
+LDR    
+001    000000000
+035 __ ‡z(FI-MELINDA)1
+035 __ ‡z(FI-MELINDA)2
+100 __ ‡aKivi, Aleksis,‡d1834-1872‡9this is a dummyfield
