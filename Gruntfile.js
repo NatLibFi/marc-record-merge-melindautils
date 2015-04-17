@@ -2,6 +2,8 @@
 
 module.exports = function(grunt) {
 
+	var proxy;
+
 	grunt.initConfig({
 		jshint: {
 			options: {
@@ -26,14 +28,13 @@ module.exports = function(grunt) {
 
 		mocha_istanbul: {
 			coveralls: {
-				src: ['test'],
+				src: ['test/*spec.js'],
 				options: {
-					coverage: true,
 					check: {
 						lines: 85,
 						statements: 85,
 						branches: 70,
-						functions: 80
+						functions: 80 
 					}
 				}
 			}
@@ -45,8 +46,38 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-mocha-istanbul');
 
 	grunt.registerTask('lint', ['jshint']);
-	grunt.registerTask('test', ['mochaTest']);
-	grunt.registerTask('coverage', ['mocha_istanbul']);
-
+	grunt.registerTask('test', ['startProxy', 'mochaTest', 'stopProxy']);
+	grunt.registerTask('coverage', ['startProxy', 'mocha_istanbul', 'stopProxy']);
+	
 	grunt.registerTask('default', ['lint', 'test', 'coverage']);
+
+	grunt.registerTask('startProxy', 'Start the proxy', function() {
+
+		var done = this.async();
+		var host = process.env.PORT ? '0.0.0.0' : '127.0.0.1';
+		var port = process.env.PORT || 8080;
+ 
+		proxy = require('./test/proxy');
+
+		proxy.listen(port, host, function() {
+		    console.log('Running CORS Anywhere on ' + host + ':' + port);
+		    done();
+		});
+
+	});
+
+	grunt.registerTask('stopProxy', 'Stop the proxy', function() {
+
+		if (proxy !== undefined) {
+			proxy.close();
+		}
+
+	});
+
+	grunt.registerTask('proxy', ['startProxy', 'wait']);
+
+	grunt.registerTask('wait', 'wait', function() {
+		this.async();
+	});
+
 };
