@@ -1,0 +1,15 @@
+should allow merge if other record's 830 fields are a subset of preferred record's fields. Even with multiple fields.
+
+LDR    00000cam a22001934i 4500
+001    1
+LOW __ ‡aFENNI
+830  0 ‡aTaideteollisuusmuseon julkaisu
+830  0 ‡aTaideteollisuustehtaan julkaisu;‡vn:o 20
+
+LDR    00000cam a22001934i 4500
+001    2
+830  0 ‡aTaideteollisuusmuseon julkaisu;‡vn:o 15
+830  0 ‡aTaideteollisuustehtaan julkaisu;‡vn:o 20‡x2225-2352
+830  0 ‡aJulkaisu / Taideteollisuusmuseo;‡vn:o 20‡x2225-2352
+
+OK

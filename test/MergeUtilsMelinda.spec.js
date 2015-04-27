@@ -25,8 +25,8 @@ describe('Merge utils -', function() {
 
 	cases.forEach(function(tcase) {
 
-	var suitesPath = path.resolve(__dirname, "cases", tcase);
-	var suites = fs.readdirSync(suitesPath);
+		var suitesPath = path.resolve(__dirname, "cases", tcase);
+		var suites = fs.readdirSync(suitesPath);
 					
 		suites.forEach(function(suite) {
 
@@ -60,63 +60,75 @@ describe('Merge utils -', function() {
 				}
 
 				if (tcase === "post") {
-
-				tests.forEach(function(test) {
-
-					it(test.description, function(done) {
-
-						this.timeout(5000);
-
-						var postMergeModifiedRecord = Record.fromString(test.record_preferred);
-
-						mergeUtils.applyPostMergeModifications(
-							Record.fromString(test.record_other), 
-							Record.fromString(test.record_preferred),
-							postMergeModifiedRecord
-						).then(function() {
-							removeField(postMergeModifiedRecord, '583');
-							expect(postMergeModifiedRecord.toString()).to.equal(test.expected_output);
-							done();
-						}).catch(function(error) {
-							expect(error.toString()).to.equal(test.expected_output);
-							done();
-						}).done();
-
-
-					});
-				});
-
+					tests.forEach(testPostMergeFunction);
 				}
-
 				if (tcase === "sanity") {
-					tests.forEach(function(test) {
-
-					it(test.description, function(done) {
-
-						this.timeout(5000);
-
-						mergeUtils.canMerge(
-							Record.fromString(test.record_other), 
-							Record.fromString(test.record_preferred)
-						).then(function(result) {
-							expect(result).to.equal(test.expected_output);
-							done();
-						}).catch(function(error) {
-							expect(error.toString()).to.equal(test.expected_output);
-							done();
-						}).done();
-
-
-					});
-				});
+					tests.forEach(testCanMergeFunction);
 				}
-
-			
 			});
-});
+		});
 	});
 
+
+	function testPostMergeFunction(test) {
+		it(test.description, function(done) {
+
+			this.timeout(5000);
+
+			var postMergeModifiedRecord = Record.fromString(test.record_preferred);
+
+			mergeUtils.applyPostMergeModifications(
+				Record.fromString(test.record_other), 
+				Record.fromString(test.record_preferred),
+				postMergeModifiedRecord
+			).then(function() {
+				removeField(postMergeModifiedRecord, '583');
+
+				expect(postMergeModifiedRecord.toString()).to.equal(test.expected_output);
+				done();
+			}).catch(function(error) {
+				if (error.name !== "AssertionError") {
+					expect(error.toString()).to.equal(test.expected_output);
+				} else {
+					throw error;
+				}
+			
+				done();
+			}).done();
+
+
+		});
+	}
+
+	function testCanMergeFunction(test) {
+		it(test.description, function(done) {
+
+			this.timeout(5000);
+
+			mergeUtils.canMerge(
+				Record.fromString(test.record_other), 
+				Record.fromString(test.record_preferred)
+			).then(function(result) {
+				expect(result).to.equal(test.expected_output);
+				done();
+			}).catch(function(error) {
+				console.log(error.name, error.toString());
+				if (error.name !== "AssertionError") {
+					expect(error.toString()).to.equal(test.expected_output);
+				} else {
+					throw error;
+				}
+
+				done();
+			}).done();
+
+
+		});
+	}
+
+
 });
+
 
 function removeField(record, tag) {
 

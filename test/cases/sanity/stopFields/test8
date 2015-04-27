@@ -1,0 +1,11 @@
+should allow merge if only other record has 830 fields, because they are then copied correctly.
+
+LDR    00000cam a22001934i 4500
+001    1
+LOW __ ‡aFENNI
+830 _0 ‡aTaideteollisuusmuseon julkaisu;‡vn:o 15
+
+LDR    00000cam a22001934i 4500
+001    2
+
+OK

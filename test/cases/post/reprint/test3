@@ -1,0 +1,15 @@
+should omit year from reprint info if it's not available
+
+001    1
+008    930406s^^^^^^^^fi^||||||m|||||||^||fin||
+250 __ ‡a6. tark. p.
+
+001    2
+008    860826s1970^^^^fi^|||||||||||||||||fin||
+
+LDR    
+001    000000000
+008    860826s1970^^^^fi^|||||||||||||||||fin||
+035 __ ‡z(FI-MELINDA)1
+035 __ ‡z(FI-MELINDA)2
+500 __ ‡aLisäpainokset: 6. tark. p.

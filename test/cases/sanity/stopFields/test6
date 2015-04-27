@@ -1,0 +1,14 @@
+should prevent merge if only either field have stop fields with "either" option.
+
+LDR    00000cam a22001934i 4500
+001    1
+LOW __ ‡aFENNI
+240 __ ‡aThis is a stop field‡bit has same content with the other field‡cso it's OK.
+245 __ ‡aa title
+
+LDR    00000cam a22001934i 4500
+001    2
+240 __ ‡aThis is a stop field‡bit has same content with the other field‡cso it's OK.
+245 __ ‡aa title
+
+OK
