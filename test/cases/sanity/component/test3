@@ -1,0 +1,10 @@
+should prevent merge even if both records are component records.
+
+LDR    00000cad^a22002414i^4500
+001    1
+
+LDR    00000cad^a22002414i^4500
+001    2
+
+Error: record is a component record: 1
+record is a component record: 2

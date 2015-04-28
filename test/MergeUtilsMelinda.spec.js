@@ -12,7 +12,12 @@ describe('Merge utils -', function() {
 
 	var config = {
 		
-		Xendpoint: 'http://localhost:8080/melinda.kansalliskirjasto.fi/X' 
+		asteri: {
+			Xendpoint: 'http://localhost:8080/melinda.kansalliskirjasto.fi/X' 
+		},
+		libtest: {
+			Xendpoint: 'http://localhost:8080/libtest.csc.fi:8992/X' 	
+		}
 		
 	};
 
