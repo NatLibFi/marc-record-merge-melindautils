@@ -31,10 +31,10 @@ module.exports = function(grunt) {
 				src: ['test/*spec.js'],
 				options: {
 					check: {
-						lines: 90,
-						statements: 89,
-						branches: 77,
-						functions: 90 
+						lines: 91,
+						statements: 90,
+						branches: 79,
+						functions: 91
 					}
 				}
 			}

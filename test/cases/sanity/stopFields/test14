@@ -1,0 +1,11 @@
+should allow merge if other record does not have diacritics in title and the preferred does.
+
+LDR    00000cam a22001934i 4500
+001    1
+245  0 ‡aCafe
+
+LDR    00000cam a22001934i 4500
+001    2
+245  0 ‡aCafé
+
+OK
