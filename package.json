@@ -8,6 +8,12 @@
   },
   "author": "Pasi Tuominen <pasi.tuominen@gmail.com>",
   "license": "ISC",
+  "dependencies": {
+    "marc-record-js": "git://github.com/petuomin/marc-record-js",
+    "q": "^1.2.0",
+    "xregexp": "^2.0.0",
+    "aleph-x-query": "git://github.com/NatLibFi/aleph-x-query"
+  },
   "devDependencies": {
     "chai": "^2.0.0",
     "cors-anywhere": "^0.2.2",
@@ -16,12 +22,7 @@
     "grunt-mocha-istanbul": "^2.3.1",
     "grunt-mocha-test": "^0.12.7",
     "istanbul": "^0.3.6",
-    "mocha": "^2.1.0",
-    "aleph-x-query": "git://github.com/NatLibFi/aleph-x-query"
-  },
-  "dependencies": {
-    "marc-record-js": "git://github.com/petuomin/marc-record-js",
-    "q": "^1.2.0",
-    "xregexp": "^2.0.0"
+    "mocha": "^2.1.0"
   }
+  
 }
