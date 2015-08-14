@@ -1,17 +1,17 @@
 should drop SID fields if there is no LOW tag with it, even if there is one in the other record
 
 001    1
-SID __ ‡c34893‡bfenni
+SID    ‡c34893‡btesti
 
 001    2
-LOW __ ‡aOULA
-LOW __ ‡aFENNI
+LOW    ‡aOULA
+LOW    ‡aTESTI
 
 LDR    
 001    000000000
-035 __ ‡z(FI-MELINDA)1
-035 __ ‡z(FI-MELINDA)2
-LOW __ ‡aFENNI
-LOW __ ‡aOULA
-SID __ ‡cFCC2‡bfenni
-SID __ ‡cFCC2‡boula
+035    ‡z(FI-MELINDA)1
+035    ‡z(FI-MELINDA)2
+LOW    ‡aOULA
+LOW    ‡aTESTI
+SID    ‡cFCC2‡boula
+SID    ‡cFCC2‡btesti

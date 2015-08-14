@@ -12,10 +12,10 @@ describe('Merge utils -', function() {
 
 	var config = {
 		
-		asteri: {
+		auth_db: {
 			Xendpoint: 'http://localhost:8080/melinda.kansalliskirjasto.fi/X' 
 		},
-		libtest: {
+		bib_db: {
 			Xendpoint: 'http://localhost:8080/libtest.csc.fi:8992/X' 	
 		}
 		

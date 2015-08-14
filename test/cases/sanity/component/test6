@@ -6,5 +6,5 @@ LDR    00000cam^a22002414i^4500
 LDR    00000cam^a22002414i^4500
 001    006072761
 
-Error: record is a host record: 006072761
+MergeValidationError: record is a host record: 006072761
 record is a host record: 006072761

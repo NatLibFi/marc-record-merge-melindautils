@@ -1,14 +1,14 @@
 should move SID fields if there is LOW tag and not create SID
 
 001    1
-SID __ ‡c34893‡bfenni
-LOW __ ‡aFENNI
+SID    ‡c34893‡btesti
+LOW    ‡aTESTI
 
 001    2
 
 LDR    
 001    000000000
-035 __ ‡z(FI-MELINDA)1
-035 __ ‡z(FI-MELINDA)2
-LOW __ ‡aFENNI
-SID __ ‡c34893‡bfenni
+035    ‡z(FI-MELINDA)1
+035    ‡z(FI-MELINDA)2
+LOW    ‡aTESTI
+SID    ‡c34893‡btesti

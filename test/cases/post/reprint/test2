@@ -2,15 +2,15 @@ should not create duplicate 500 notes from reprints
 
 001    1
 008    930406s1975^^^^fi^||||||m|||||||^||fin||
-250 __ ‡a6. tark. p.
+250    ‡a6. tark. p.
 
 001    2
 008    860826s1970^^^^fi^|||||||||||||||||fin||
-500 __ ‡aLisäpainokset: 6. tark. p. 1975
+500    ‡aLisäpainokset: 6. tark. p. 1975
 
 LDR    
 001    000000000
 008    860826s1970^^^^fi^|||||||||||||||||fin||
-035 __ ‡z(FI-MELINDA)1
-035 __ ‡z(FI-MELINDA)2
-500 __ ‡aLisäpainokset: 6. tark. p. 1975
+035    ‡z(FI-MELINDA)1
+035    ‡z(FI-MELINDA)2
+500    ‡aLisäpainokset: 6. tark. p. 1975

@@ -1,0 +1,11 @@
+!should prevent merge for different types (inferred from 300a)
+
+LDR    00000cam a22001934i 4500
+001    1
+300    ‡a4 nid.
+
+LDR    00000cam a22001934i 4500
+001    2
+300    ‡a12 s.
+
+MergeValidationError: Records have different inferred count of types (from field 300a): 4 - 1

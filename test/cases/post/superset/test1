@@ -11,6 +11,6 @@ should use title field from other record if it's superset of preferred record's 
 LDR    
 001    000000000
 008    860826s1970^^^^fi^|||||||||||||||||fin||
-035 __ ‡z(FI-MELINDA)1
-035 __ ‡z(FI-MELINDA)2
+035    ‡z(FI-MELINDA)1
+035    ‡z(FI-MELINDA)2
 245 00 ‡aKolmio :‡bharjoituskirja.‡n3

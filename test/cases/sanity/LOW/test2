@@ -1,11 +1,11 @@
 should allow merge when everyting is ok
 
 001    1
-100 __ ‡aKivi, Aleksis,‡d1834-1872
-LOW __ ‡aFENNI
+100    ‡aKivi, Aleksis,‡d1834-1872
+LOW    ‡aTESTI
 
 001    2
-100 __ ‡aAleksis Kivi
-LOW __ ‡aOULA
+100    ‡aAleksis Kivi
+LOW    ‡aOULA
 
 OK

@@ -6,5 +6,5 @@ LDR    00000cad^a22002414i^4500
 LDR    00000cad^a22002414i^4500
 001    2
 
-Error: record is a component record: 1
+MergeValidationError: record is a component record: 1
 record is a component record: 2

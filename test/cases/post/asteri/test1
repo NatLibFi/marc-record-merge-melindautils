@@ -1,13 +1,13 @@
 should use asteri to select the authorized format for author from records
 
 001    1
-100 __ ‡aKivi, Aleksis,‡d1834-1872
+100    ‡aKivi, Aleksis,‡d1834-1872
 
 001    2
-100 __ ‡aAleksis Kivi
+100    ‡aAleksis Kivi
 
 LDR    
 001    000000000
-035 __ ‡z(FI-MELINDA)1
-035 __ ‡z(FI-MELINDA)2
-100 __ ‡aKivi, Aleksis,‡d1834-1872
+035    ‡z(FI-MELINDA)1
+035    ‡z(FI-MELINDA)2
+100    ‡aKivi, Aleksis,‡d1834-1872

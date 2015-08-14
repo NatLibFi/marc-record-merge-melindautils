@@ -8,4 +8,4 @@ LDR    00000cam a22001934i 4500
 001    2
 245  0 ‡aCafe
 
-Error: Other fields has diacritics in field: 245
+MergeValidationError: Other fields has diacritics in field: 245

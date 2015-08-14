@@ -2,11 +2,11 @@ should prevent merge if only either field have stop fields with "either" option.
 
 LDR    00000cam a22001934i 4500
 001    1
-LOW __ ‡aFENNI
-240 __ ‡aThis is a stop field‡bit has almost same content with the other field‡cso it's NOT OK.
+LOW    ‡aTESTI
+240    ‡aThis is a stop field‡bit has almost same content with the other field‡cso it's NOT OK.
 
 LDR    00000cam a22001934i 4500
 001    2
-240 __ ‡aThis is a stop field‡bit has same content with the other field‡cso it's OK.
+240    ‡aThis is a stop field‡bit has same content with the other field‡cso it's OK.
 
-Error: Both records have differing stop fields. Automated handling is not currently possible for: 240
+MergeValidationError: Both records have differing stop fields. Automated handling is not currently possible for: 240

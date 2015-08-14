@@ -1,13 +1,13 @@
 should be ok if both are authorized format and the same
 
 001    1
-110 __ ‡aAleksis Kiven seura
+110    ‡aAleksis Kiven seura
 
 001    2
-110 __ ‡aAleksis Kiven seura
+110    ‡aAleksis Kiven seura
 
 LDR    
 001    000000000
-035 __ ‡z(FI-MELINDA)1
-035 __ ‡z(FI-MELINDA)2
-110 __ ‡aAleksis Kiven seura
+035    ‡z(FI-MELINDA)1
+035    ‡z(FI-MELINDA)2
+110    ‡aAleksis Kiven seura

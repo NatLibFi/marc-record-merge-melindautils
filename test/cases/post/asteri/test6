@@ -1,10 +1,10 @@
 should throw an error if there are multiple author fields
 
 001    1
-100 __ ‡aAleksis Kivi
-110 __ ‡aAleksis Kiven seura
+100    ‡aAleksis Kivi
+110    ‡aAleksis Kiven seura
 
 001    2
-110 __ ‡aAleksis Kiven seura
+110    ‡aAleksis Kiven seura
 
-Error: Record has multiple names: Aleksis Kivi,Aleksis Kiven seura
+MergeValidationError: Record has multiple names: Aleksis Kivi,Aleksis Kiven seura

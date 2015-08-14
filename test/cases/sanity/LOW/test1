@@ -1,12 +1,12 @@
 should prevent merge when both records have same LOW tags
 
 001    1
-100 __ ‡aKivi, Aleksis,‡d1834-1872
-LOW __ ‡aFENNI
+100    ‡aKivi, Aleksis,‡d1834-1872
+LOW    ‡aTESTI
 
 001    2
-100 __ ‡aAleksis Kivi
-LOW __ ‡aFENNI
-LOW __ ‡aOULA
+100    ‡aAleksis Kivi
+LOW    ‡aTESTI
+LOW    ‡aOULA
 
-Error: Both records have have LOW tag: FENNI
+MergeValidationError: Both records have have LOW tag: TESTI

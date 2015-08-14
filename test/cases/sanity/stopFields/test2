@@ -2,11 +2,11 @@ should allow merge if only preferred field has stop fields with "exceptPreferred
 
 LDR    00000cam a22001934i 4500
 001    1
-LOW __ ‡aFENNI
-245 __ ‡aTesti
+LOW    ‡aTESTI
+245    ‡aTesti
 
 LDR    00000cam a22001934i 4500
 001    2
-880 __ ‡aThis is a stop field in preferred record, which is OK.
+880    ‡aThis is a stop field in preferred record, which is OK.
 
 OK

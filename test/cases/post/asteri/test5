@@ -1,9 +1,9 @@
 should throw an error if author types are not the same
 
 001    1
-100 __ ‡aAleksis Kivi
+100    ‡aAleksis Kivi
 
 001    2
-110 __ ‡aAleksis Kiven seura
+110    ‡aAleksis Kiven seura
 
-Error: Author type mismatch.
+MergeValidationError: Author type mismatch.

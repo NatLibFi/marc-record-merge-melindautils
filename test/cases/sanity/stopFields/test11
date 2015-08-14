@@ -2,7 +2,7 @@ should allow merge if other record's 830 fields are a subset of preferred record
 
 LDR    00000cam a22001934i 4500
 001    1
-LOW __ ‡aFENNI
+LOW    ‡aTESTI
 830  0 ‡aTaideteollisuusmuseon julkaisu
 830  0 ‡aTaideteollisuustehtaan julkaisu;‡vn:o 20
 

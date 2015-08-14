@@ -2,15 +2,15 @@ should make use of normalizations when determining the supersetness
 
 001    1
 008    930406s^^^^^^^^fi^||||||m|||||||^||fin||
-245 00 ‡aKolmio :‡bharjoituskirja : ‡n3 -
+265 00 ‡aKolmio :‡bharjoituskirja : ‡n3 -
 
 001    2
 008    860826s1970^^^^fi^|||||||||||||||||fin||
-245 00 ‡aKolmio :‡bharjoituskirja.--
+265 00 ‡aKolmio :‡bharjoituskirja.--
 
 LDR    
 001    000000000
 008    860826s1970^^^^fi^|||||||||||||||||fin||
-035 __ ‡z(FI-MELINDA)1
-035 __ ‡z(FI-MELINDA)2
-245 00 ‡aKolmio :‡bharjoituskirja : ‡n3 -
+035    ‡z(FI-MELINDA)1
+035    ‡z(FI-MELINDA)2
+265 00 ‡aKolmio :‡bharjoituskirja : ‡n3 -
