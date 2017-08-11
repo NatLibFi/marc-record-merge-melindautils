@@ -43,11 +43,16 @@ describe('Merge utils -', function() {
     query: authDbQuery
   };
   
-  const isHostRecord = { data: { find: { error: 'empty set'}}};
+  const isNotHostRecord = { data: { find: { error: 'empty set'}}};
+  const isHostRecord = { data: { find: { no_records: 1}}};
 
+  const rawStub = sinon.stub();
+  rawStub.withArgs(sinon.match({request: 'MHOST=006072761'})).resolves(isHostRecord);
+  rawStub.resolves(isNotHostRecord);
+  
   const bibDbStub = {
     query: sinon.stub().resolves('FAKE-BIB-RESULTS'),
-    raw: sinon.stub().resolves(isHostRecord)
+    raw: rawStub
   };
   
   
