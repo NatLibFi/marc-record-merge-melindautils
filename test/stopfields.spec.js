@@ -28,10 +28,10 @@ describe('checkStopFields ', function() {
   describe('with preferredIsSubset option', function() {
 
     var stopFieldConfig = {
-      '245': { validate: 'preferredIsSuperset' }
+      '245': { validate: ['identical', 'preferredIsSuperset'] }
     };
 
-    it('should not return anything if fields are identical work', function() {
+    it('should not return anything if fields are identical', function() {
       var otherRecord = new Record();
       otherRecord.appendField(['245','','','a','FieldContent']);
 

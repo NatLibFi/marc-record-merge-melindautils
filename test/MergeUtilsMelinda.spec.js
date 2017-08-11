@@ -1,6 +1,7 @@
 /*jshint mocha:true*/
 'use strict';
 
+const sinon = require('sinon');
 var chai = require('chai');
 var expect = chai.expect;
 var Record = require('marc-record-js');
@@ -8,20 +9,49 @@ var MergeUtilsMelinda = require('../lib/marc-record-merge-melindautils');
 var path = require('path');
 var fs = require('fs');
 
+function AuthRecord(a, d) {
+  const fakeAuthRecord = new Record();
+  if (d) {
+    fakeAuthRecord.appendField(['100','','','a',a,'d',d]);
+  } else {
+    fakeAuthRecord.appendField(['100','','','a',a]);
+  }
+  return fakeAuthRecord;
+}
+
 describe('Merge utils -', function() {
 
-  var config = {
-    
-    auth_db: {
-      Xendpoint: 'http://localhost:8080/melinda.kansalliskirjasto.fi/X' 
-    },
-    bib_db: {
-      Xendpoint: 'http://localhost:8080/libtest.csc.fi:8992/X' 	
-    }
-    
-  };
+  const fakeAuthRecord = new Record();
+  fakeAuthRecord.appendField(['100','','','a','Kivi, Aleksis,', 'd', '1834-1872']);
 
-  var mergeUtils = new MergeUtilsMelinda(config);
+  const fakeAuthRecord2 = new Record();
+  fakeAuthRecord2.appendField(['100','','','a','Aleksis Kiven seura']);
+
+  
+  const authDbQuery = sinon.stub();
+  
+  authDbQuery.withArgs('fin11', 'WNA', 'Aleksis Kivi').resolves(Array.of(AuthRecord('Kivi, Aleksis,', '1834-1872')));
+  authDbQuery.withArgs('fin11', 'WNA', 'Kivi, Aleksis, 1834-1872').resolves(Array.of(AuthRecord('Kivi, Aleksis,', '1834-1872')));
+  authDbQuery.withArgs('fin11', 'WNA', 'Aleksis Kiven seura').resolves(Array.of(AuthRecord('Aleksis Kiven seura')));
+  authDbQuery.withArgs('fin11', 'WNA', 'Aleksis Kiven seur').resolves(Array.of(AuthRecord('Aleksis Kiven seura')));
+
+  authDbQuery.withArgs('fin11', 'WNA', 'Castrén, Klaus, 1923-2011.').resolves(Array.of(AuthRecord('Castrén, Klaus,','1923-2011.')));
+  authDbQuery.withArgs('fin11', 'WNA', 'Castrén, Klaus.').resolves(Array.of(AuthRecord('Castrén, Klaus,','1923-2011.')));
+
+
+  const authDbStub = {
+    query: authDbQuery
+  };
+  
+  const isHostRecord = { data: { find: { error: 'empty set'}}};
+
+  const bibDbStub = {
+    query: sinon.stub().resolves('FAKE-BIB-RESULTS'),
+    raw: sinon.stub().resolves(isHostRecord)
+  };
+  
+  
+  var mergeUtils = new MergeUtilsMelinda(authDbStub, bibDbStub);
 
   var DEBUG = process.env.NODE_ENV === 'DEBUG';
 
@@ -46,7 +76,7 @@ describe('Merge utils -', function() {
 
         var tests = testFiles.map(function(file) {
 
-          var data = readAndTrim(path.resolve(p,file)).split('\n\n');
+          var data = readAndTrim(path.resolve(p, file)).split('\n\n');
 
           return {
             description: data[0] + (DEBUG ? ' (' + path.resolve(p,file) + ')' : ''),
@@ -92,6 +122,8 @@ describe('Merge utils -', function() {
         expect(postMergeModifiedRecord.toString()).to.equal(test.expected_output);
         done();
       }).catch(function(error) {
+        if (error.name === 'TypeError') { throw error; }
+
         if (error.name !== 'AssertionError') {
           expect(error.toString()).to.equal(test.expected_output);
         } else {
@@ -100,7 +132,6 @@ describe('Merge utils -', function() {
       
         done();
       }).done();
-
 
     });
   }
@@ -117,7 +148,8 @@ describe('Merge utils -', function() {
         expect(result).to.equal(test.expected_output);
         done();
       }).catch(function(error) {
-        
+        if (error.name === 'TypeError') { throw error; }
+
         if (error.name !== 'AssertionError') {
           expect(error.toString()).to.equal(test.expected_output);
         } else {
@@ -127,16 +159,12 @@ describe('Merge utils -', function() {
         done();
       }).done();
 
-
     });
   }
-
-
 });
 
 
 function removeField(record, tag) {
-
   record.fields = record.fields.filter(function(field) {
     return field.tag !== tag;
   });
