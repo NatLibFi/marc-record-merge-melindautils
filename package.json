@@ -4,7 +4,7 @@
   "description": "Utility functions to apply for marc records during deduplication in the National Library of Finland's union catalogue",
   "main": "lib/marc-record-merge-melindautils.js",
   "scripts": {
-    "test": "grunt default",
+    "test": "mocha **/*.spec.js",
     "lint": "eslint ."
   },
   "author": "Pasi Tuominen <pasi.tuominen@gmail.com>",
