@@ -5,6 +5,7 @@
   "main": "lib/marc-record-merge-melindautils.js",
   "scripts": {
     "test": "mocha **/*.spec.js",
+    "test:watch": "mocha -w **/*.spec.js",
     "lint": "eslint .",
     "coverage": "nyc mocha **/*.spec.js"
   },
