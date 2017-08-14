@@ -2,12 +2,12 @@
 'use strict';
 
 const sinon = require('sinon');
-var chai = require('chai');
-var expect = chai.expect;
-var Record = require('marc-record-js');
-var MergeUtilsMelinda = require('../lib/marc-record-merge-melindautils');
-var path = require('path');
-var fs = require('fs');
+const chai = require('chai');
+const expect = chai.expect;
+const Record = require('marc-record-js');
+const MergeUtilsMelinda = require('../lib/marc-record-merge-melindautils');
+const path = require('path');
+const fs = require('fs');
 
 function AuthRecord(a, d) {
   const fakeAuthRecord = new Record();
@@ -136,7 +136,7 @@ describe('Merge utils -', function() {
         }
       
         done();
-      }).done();
+      });
 
     });
   }
@@ -162,7 +162,7 @@ describe('Merge utils -', function() {
         }
 
         done();
-      }).done();
+      });
 
     });
   }

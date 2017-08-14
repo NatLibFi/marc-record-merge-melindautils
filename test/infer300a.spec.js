@@ -1,26 +1,11 @@
 /*jshint mocha:true*/
 'use strict';
 
-var chai = require('chai');
-var expect = chai.expect;
-var MergeUtilsMelinda = require('../lib/marc-record-merge-melindautils');
+const chai = require('chai');
+const expect = chai.expect;
+const { inferTypeAndCount } = require('../lib/record-utils');
 
 describe('checkStopFields ', function() {
-
-  var config = {
-    
-    auth_db: {
-      Xendpoint: 'http://localhost:8080/melinda.kansalliskirjasto.fi/X' 
-    },
-    bib_db: {
-      Xendpoint: 'http://localhost:8080/libtest.csc.fi:8992/X' 	
-    }
-    
-  };
-
-  var mergeUtils = new MergeUtilsMelinda(config);
-
-  var inferTypeAndCount = mergeUtils._inferTypeAndCount;
 
   var cases = {
     '12 s. :': ['volume', 1],

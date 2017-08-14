@@ -4,26 +4,9 @@
 var chai = require('chai');
 var expect = chai.expect;
 var Record = require('marc-record-js');
-var MergeUtilsMelinda = require('../lib/marc-record-merge-melindautils');
+const validateFields = require('../lib/validate-fields');
 
 describe('checkStopFields ', function() {
-
-  var config = {
-    
-    auth_db: {
-      Xendpoint: 'http://localhost:8080/melinda.kansalliskirjasto.fi/X' 
-    },
-    bib_db: {
-      Xendpoint: 'http://localhost:8080/libtest.csc.fi:8992/X' 	
-    }
-    
-  };
-
-  var mergeUtils = new MergeUtilsMelinda(config);
-
-  it('should exist', function() {
-    expect(mergeUtils).to.be.an('object');
-  });
 
   describe('with preferredIsSubset option', function() {
 
@@ -38,7 +21,7 @@ describe('checkStopFields ', function() {
       var preferredRecord = new Record();
       preferredRecord.appendField(['245','','','a','FieldContent']);
 
-      var messages = mergeUtils._validateFields(stopFieldConfig, otherRecord, preferredRecord);
+      var messages = validateFields(stopFieldConfig, otherRecord, preferredRecord);
       expect(messages).length.to.be(0);
     });
 
@@ -49,7 +32,7 @@ describe('checkStopFields ', function() {
       var preferredRecord = new Record();
       preferredRecord.appendField(['245','','','a','FieldContent','b','MoreFieldContent']);
 
-      var messages = mergeUtils._validateFields(stopFieldConfig, otherRecord, preferredRecord);
+      var messages = validateFields(stopFieldConfig, otherRecord, preferredRecord);
       expect(messages).length.to.be(0);
     });
 
@@ -60,7 +43,7 @@ describe('checkStopFields ', function() {
       var preferredRecord = new Record();
       preferredRecord.appendField(['245','','','a','FieldContent']);
 
-      var messages = mergeUtils._validateFields(stopFieldConfig, otherRecord, preferredRecord);
+      var messages = validateFields(stopFieldConfig, otherRecord, preferredRecord);
       expect(messages).length.to.be(2);
       expect(messages).to.contain('Preferred record has stopfields that are a subset of the other record in field: 245');
     });
@@ -78,7 +61,7 @@ describe('checkStopFields ', function() {
         'c','[Oikeusministeriö, oikeushallinto-osasto, ulosottoyksikkö].']);
 
 
-      var messages = mergeUtils._validateFields(stopFieldConfig, otherRecord, preferredRecord);
+      var messages = validateFields(stopFieldConfig, otherRecord, preferredRecord);
       expect(messages).length.to.be(0);
     });
 
@@ -95,7 +78,7 @@ describe('checkStopFields ', function() {
         'b','oikeushallintotilastoja vuodelta 2005 : ulosottotoimi /']);
 
 
-      var messages = mergeUtils._validateFields(stopFieldConfig, otherRecord, preferredRecord);
+      var messages = validateFields(stopFieldConfig, otherRecord, preferredRecord);
   
       expect(messages).length.to.be(2);
 
@@ -110,7 +93,7 @@ describe('checkStopFields ', function() {
       var preferredRecord = new Record();
       preferredRecord.appendField(['245','0','0','a','FieldContent']);
 
-      var messages = mergeUtils._validateFields(stopFieldConfig, otherRecord, preferredRecord);
+      var messages = validateFields(stopFieldConfig, otherRecord, preferredRecord);
       expect(messages).length.to.be(0);
     
     });
@@ -121,7 +104,7 @@ describe('checkStopFields ', function() {
       var preferredRecord = new Record();
       preferredRecord.appendField(['245','1','0','a','FieldContent']);
 
-      var messages = mergeUtils._validateFields(stopFieldConfig, otherRecord, preferredRecord);
+      var messages = validateFields(stopFieldConfig, otherRecord, preferredRecord);
       expect(messages).length.to.be(0);
     });
 
