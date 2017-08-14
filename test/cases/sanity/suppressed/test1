@@ -1,0 +1,12 @@
+should prevent merge if records are suppressed
+
+LDR    00000cam a22001934i 4500
+001    1
+SID    ‡c34893‡btesti
+LOW    ‡aTESTI
+STA    ‡asuppressed
+
+LDR    00000cam a22001934i 4500
+001    2
+
+MergeValidationError: Record is suppressed

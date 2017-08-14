@@ -18,6 +18,7 @@
     "xregexp": "^2.0.0"
   },
   "devDependencies": {
+    "babel-eslint": "^7.2.3",
     "chai": "^2.0.0",
     "eslint": "^4.4.1",
     "mocha": "^2.1.0",
