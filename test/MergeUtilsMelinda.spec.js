@@ -111,21 +111,21 @@ describe('Merge utils -', function() {
 
 
   function testPostMergeFunction(test) {
-    it(test.description, function(done) {
+    it(test.description, function() {
 
       this.timeout(5000);
 
       var postMergeModifiedRecord = Record.fromString(test.record_preferred);
 
-      mergeUtils.applyPostMergeModifications(
+      return mergeUtils.applyPostMergeModifications(
         Record.fromString(test.record_other), 
         Record.fromString(test.record_preferred),
         postMergeModifiedRecord
       ).then(function() {
+        
         removeField(postMergeModifiedRecord, '583');
-
         expect(postMergeModifiedRecord.toString()).to.equal(test.expected_output);
-        done();
+      
       }).catch(function(error) {
         if (error.name === 'TypeError') { throw error; }
 
@@ -134,24 +134,21 @@ describe('Merge utils -', function() {
         } else {
           throw error;
         }
-      
-        done();
       });
 
     });
   }
 
   function testCanMergeFunction(test) {
-    it(test.description, function(done) {
+    it(test.description, function() {
 
       this.timeout(5000);
 
-      mergeUtils.canMerge(
+      return mergeUtils.canMerge(
         Record.fromString(test.record_other), 
         Record.fromString(test.record_preferred)
       ).then(function(result) {
         expect(result).to.equal(test.expected_output);
-        done();
       }).catch(function(error) {
         if (error.name === 'TypeError') { throw error; }
 
@@ -160,8 +157,6 @@ describe('Merge utils -', function() {
         } else {
           throw error;
         }
-
-        done();
       });
 
     });
