@@ -1,6 +1,6 @@
-# marc-record-merge-melindautils
+# Utility functions to apply for MARC records during deduplication in Melinda
 
-marc-record-merge-melindautils is a javascript module to be used in addition to marc-record-merge module. Melindautils handle Melinda -specific sanity checks and modifications of the duplicate records to be merged. This module is part of the larger marc record deduplication system.
+A javascript module to be used in addition to [marc-record-merge module](https://github.com/natlibfi/marc-record-merge). Handles Melinda-specific sanity checks and modifications of the duplicate records to be merged. This module is part of the larger marc record deduplication system.
 
 
 ## Installation
@@ -52,3 +52,8 @@ mergeUtils.applyPostMergeModifications(record1, record2, mergedRecord).then(func
 The grunt default task will run jshint, tests and coverage for the module. Tests can be found from test/ directory. Checking the tests may also be a good place to see how the module works.
 Tests are currently executed using the Melinda test instance, so to run the tests a internet connection is required.
 
+## License and copyright
+
+Copyright (c) 2015, 2017 **University Of Helsinki (The National Library Of Finland)**
+
+This project's source code is licensed under the terms of **GNU Affero General Public License Version 3** or any later version.

@@ -1,7 +1,19 @@
 {
   "name": "marc-record-merge-melindautils",
   "version": "2.0.0",
-  "description": "Utility functions to apply for marc records during deduplication in the National Library of Finland's union catalogue",
+  "description": "Utility functions to apply for MARC records during deduplication in Melinda",
+  "author": {
+    "name": "The National Library of Finland"
+  },
+  "homepage": "https://github.com/NatLibFi/marc-record-merge-melindautils",
+  "bugs": {
+    "url": "https://github.com/NatLibFi/marc-record-merge-melindautils/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:NatLibFi/marc-record-merge-melindautils.git"
+  },
+  "license": "AGPL-3.0+",
   "main": "lib/marc-record-merge-melindautils.js",
   "scripts": {
     "test": "mocha **/*.spec.js",
@@ -9,8 +21,6 @@
     "lint": "eslint .",
     "coverage": "nyc mocha **/*.spec.js"
   },
-  "author": "Pasi Tuominen <pasi.tuominen@gmail.com>",
-  "license": "ISC",
   "dependencies": {
     "aleph-x-query": "git://github.com/NatLibFi/aleph-x-query",
     "debug": "^3.0.0",
